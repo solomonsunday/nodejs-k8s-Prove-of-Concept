@@ -2,6 +2,9 @@ apiVersion: apps/v1
 kind: Deployment
 metadata: 
   name: nestjs-k8s
+  namespace: poc
+  labels:
+    app: nestjs-k8s
 spec: 
   selector:
     matchLabels:
@@ -13,7 +16,15 @@ spec:
         app: nestjs-k8s
     spec: 
       containers:
-        - name: nestjs-k8s
-          image: chinoyerem/nestjs-k8s
-          ports:
-            -  containerPort: 3000
+       - name: nestjs-k8s
+         image: chinoyerem/nestjs-k8s
+         #  helps us to manage a pod resources
+         resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+         ports:
+         -  containerPort: 3000
