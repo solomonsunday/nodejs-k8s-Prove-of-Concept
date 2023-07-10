@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: nestjs-k8s
+  namespace: stagigng
+  labels:
+    app: nestjs-k8s
+spec: 
+  selector:
+    matchLabels:
+      app: nestjs-k8s
+  replicas: 3
+  template:
+    metadata: 
+      labels:
+        app: nestjs-k8s
+    spec: 
+      containers:
+       - name: nestjs-k8s
+         image: chinoyerem/nestjs-k8s
+         ports:
+         - containerPort: 3000
+        #  env:
+        #     - name: POD_NAME
+        #       valueFrom:
+        #        fieldRef:
+        #          fieldPath: metadate.name
+        #     - name : POD_NAMESPACE
+        #       valueFrom:
+        #         fieldRef:
+        #           fieldPath: metadata.annotations['pod_name']
+        #     - name: POD_IP
+        #       valueFrom:
+        #         fieldRef:
+        #           fieldPath: status.podIP

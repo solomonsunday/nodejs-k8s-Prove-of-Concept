@@ -1,0 +1,7 @@
+1. manually delete your loadbalancer
+2. eksctl delete cluster --name lil-eks
+3. manually delete in VPC EC2 and EKS, Cloudformation
+
+
+install aws cli, kubectl and eksused iam to control which user has accessiblespin up a cluster
+deploy app to the created cluster and make it available via the internet using load banancer

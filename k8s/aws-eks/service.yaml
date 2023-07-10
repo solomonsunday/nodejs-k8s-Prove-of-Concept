@@ -1,0 +1,26 @@
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: nestjs-k8s
+# spec:
+#   selector:
+#     app: nestjs-k8s
+#   ports:
+#     - protocol: TCP
+#       port: 3000
+#   type: NodePort
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: nestjs-k8s-service
+  namespace: stagigng
+spec:
+  ports:
+    - port: 80
+      targetPort: 3000
+      protocol: TCP
+  type: NodePort
+  selector:
+    app: nestjs-k8s  
+  
